@@ -84,10 +84,10 @@ class InfoContableApiController {
     public function insertinfo($params = null) {
         $infoc = $this->getData();
        
-        if (empty($infoc->Fecha) || empty($infoc->Detalle) ||   empty($infoc->Cantidad )   ||empty($infoc->Comision )   ||  empty($infoc->Importe)  || empty($infoc->id_categorias)  ) {
+        if (empty($infoc->Fecha) || empty($infoc->Detalle) ||   empty($infoc->Cantidad )   ||empty($infoc->Comision )   ||  empty($infoc->Importe)  || empty($infoc->id_categorias_fk)  ) {
             $this->view->response("Complete los datos", 400);
         } else {
-            $id = $this->model->insertinfoContable($infoc->Fecha, $infoc->Detalle,$infoc->Cantidad,$infoc->Comision ,$infoc->Importe,  $infoc->id_categorias);
+            $id = $this->model->insertinfoContable($infoc->Fecha, $infoc->Detalle,$infoc->Cantidad,$infoc->Comision ,$infoc->Importe,  $infoc->id_categorias_fk);
             $infoc = $this->model->get($id);
             $this->view->response($infoc, 201);
         }
@@ -98,7 +98,7 @@ class InfoContableApiController {
         $infoc = $this->model->get($infoc_id);
         if (isset ($infoc)) {
             $body = $this->getData();
-            $infoc = $this->model->info_Contable($body->Fecha, $body->Detalle, $body->Cantidad,$body->Comision, $body->Importe,  $body->id_categorias,$body->id_contable);
+            $infoc = $this->model->info_Contable($body->Fecha, $body->Detalle, $body->Cantidad,$body->Comision, $body->Importe,  $body->id_categorias_fk,$body->id_contable);
             $this->view->response("Localidad con id=$infoc_id actualizada con éxito", 200);
         }
         else 

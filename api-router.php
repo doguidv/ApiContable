@@ -2,6 +2,7 @@
 require_once './libs/Router.php';
 require_once './app/controllers/infocontable_app.controller.php';
 require_once './app/controllers/categorias_app.controller.php';
+
 // crea el router
 $router = new Router();
 

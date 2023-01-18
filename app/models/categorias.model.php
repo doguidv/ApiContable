@@ -41,7 +41,7 @@ class CategoriasModel {
      * Inserta una localidad en la base de datos.
      */
     public function insert($Tipo_Inversion) {
-        $query = $this->db->prepare("INSERT INTO categorias (Tipo_Inverison) VALUES (?)");
+        $query = $this->db->prepare("INSERT INTO categorias (Tipo_Inversion) VALUES (?)");
         $query->execute([$Tipo_Inversion]);
         return $this->db->lastInsertId();
         }

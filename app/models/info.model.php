@@ -62,12 +62,6 @@ class InfoModel {
 /**
      * modifica info pesca dado su id.
      */
-    function updateinfoById($id){
-        $sentencia= $this-> db->prepare("SELECT *FROM info_contable WHERE id_contable =?;");
-        $sentencia->execute([$id]);
-        $infop= $sentencia->fetch(PDO:: FETCH_OBJ);
-        return $infop;
-        }
     function info_Contable($Fecha, $Detalle,$Cantidad,$Comision, $Importe,  $id_categorias_fk,$id_contable) {
         $query=$this->db->prepare('UPDATE info_contable SET  Fecha=?,Detalle=?,Cantidad=?,Comision=?,Importe=?,id_categorias_fk=?, WHERE id_contable= ?;');
         $query->execute ([$Fecha,$Detalle,$Cantidad,$Comision,$Importe,$id_categorias_fk,$id_contable]);      
@@ -83,7 +77,7 @@ class InfoModel {
               /**  $query = $this->db->prepare("SELECT COLUMN_NAME FROM INFORMATION_SCHEMA.COLUMNS WHERE TABLE_SCHEMA = 'tpoweb2' and TABLE_NAME = 'info_pesca' order by ORDINAL_POSITION");//selecciono toda la lista de la tabla clothes
                $query->execute();                  //envio la consulta        
                $columns = $query->fetchAll(PDO::FETCH_ASSOC); // devuelve un arreglo de objetos */
-              $columns= array ( "*", "id_contable", "Fecha", "Detalle","Cantidad","Comision","Importe","id_categorias");
+              $columns= array ( "*", "id_contable", "Fecha", "Detalle","Cantidad","Comision","Importe","id_categorias_fk");
                return $columns;  //reenvia el arreglo al controlador
             
             
